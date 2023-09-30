@@ -1,0 +1,22 @@
+
+    sequenceDiagram
+        participant M as Main
+        participant DP as DataProcessor
+        participant ML as MLModel
+        participant EI as ECUInterface
+        participant WI as WebInterface
+        participant SC as SecurityChecker
+        participant DG as DocumentationGenerator
+        M->>DP: load_data("data.csv")
+        DP-->>M: data
+        M->>DP: process_data(data)
+        DP-->>M: processed_data
+        M->>ML: train_model(processed_data)
+        M->>ML: predict_parameters(processed_data)
+        ML-->>M: parameters
+        M->>EI: send_parameters(parameters)
+        M->>WI: display_data(processed_data)
+        M->>WI: display_recommendations(parameters)
+        M->>SC: check_code()
+        M->>DG: generate_docs()
+    
